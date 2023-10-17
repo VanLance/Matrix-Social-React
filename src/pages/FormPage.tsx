@@ -1,10 +1,9 @@
 import Body from "../components/Body";
-import RegisterForm from '../components/forms/RegisterForm'
 
-export default function FormPage() {
+export default function FormPage(props: { children: JSX.Element }) {
   return (
     <Body sidebar={false}>
-      <RegisterForm />
+      { props.children }
     </Body>
   )
 }
