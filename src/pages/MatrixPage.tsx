@@ -1,16 +1,30 @@
 import Body from "../components/Body";
 import Instructors from "../components/Instructors";
 import Students from "../components/Students";
-import Users from "../components/Users";
 import Whiteboard from "../components/Whiteboard";
 
 export default function MatrixPage() {
+
+  const students = [
+    'tim',
+    'porter',
+    'lyla',
+    'toby',
+    'raul',
+    'josh',
+    'milad',
+    'tom',
+    'senait',
+    'mabel',
+    'mel',
+    'heather',
+  ];
+
   return (
     <Body sidebar>
       <Instructors />
-      <Students />
-      <Whiteboard />
-      <Users />
+      <Students studentArray={students} />
+      <Whiteboard students={students} />
     </Body>
   )
 }

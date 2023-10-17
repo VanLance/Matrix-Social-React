@@ -1,24 +1,9 @@
 import { useState } from 'react'
 
-export default function Whiteboard() {
+export default function Whiteboard({ students }: { students:string[] }) {
   
   const [whiteboardStudent, setWhiteboardStudent] = useState('porter');
   console.log(whiteboardStudent)
-
-  const students = [
-    'tim',
-    'porter',
-    'lyla',
-    'toby',
-    'raul',
-    'josh',
-    'milad',
-    'tom',
-    'senait',
-    'mabel',
-    'mel',
-    'heather',
-  ];
 
 
   return (
