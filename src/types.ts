@@ -12,3 +12,9 @@ export type User = {
   last_name?: string
 }
 
+export type Post = {
+  id: string
+  timestamp: Date
+  user_id: number
+  body: string
+}

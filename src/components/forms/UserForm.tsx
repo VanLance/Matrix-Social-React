@@ -39,11 +39,11 @@ export default function UserForm({ edit } : { edit: boolean}) {
 
   async function registerUser(user: User, endpoint: boolean | string){
     endpoint = endpoint ? 'user' : 'register'
-    // const token = {Authorization: `Bearer ${JSON.parse(localStorage.getItem('token')!)}`}
     const res = await fetch(`http://127.0.0.1:5000/${endpoint}`, {
       method: edit ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json',
-                  Authorization: `Bearer ${localStorage.getItem('token')!}`},
+                  Authorization: `Bearer ${localStorage.getItem('token')!}`
+                },
       body: JSON.stringify(user)
     })
     const data = await res.json()

@@ -6,8 +6,8 @@ import { UserContext } from '../../contexts/UserProvider'
 
 export default function LoginForm() {
   const navigate = useNavigate()
-  const {user, setUser} = useContext(UserContext)
-  console.log(user, 'from login page ===============')
+  const { setUser} = useContext(UserContext)
+  
   const usernameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
   const passwordField = useRef<HTMLInputElement>(null)
@@ -67,7 +67,7 @@ export default function LoginForm() {
       <input type="text" name='email' ref={emailField}/><br/>
       <label htmlFor="password">Password</label><br/>
       <input type="password" name='password' ref={passwordField} required/><br/>
-      <input type="submit" value='Register' />
+      <input type="submit" value='Login' />
     </form>
   )
 }

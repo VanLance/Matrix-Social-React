@@ -30,7 +30,10 @@ export default function Heading(): JSX.Element {
         </> :
         <>
           <Nav.Item>
-            <Nav.Link as={NavLink} to='/edit'>Edit Profile</Nav.Link>
+            <Nav.Link as={NavLink} to='/delete-user'>Delete Profile</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={NavLink} to='/edit-user'>Edit Profile</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link as={NavLink} to='/logout'>Logout</Nav.Link>
