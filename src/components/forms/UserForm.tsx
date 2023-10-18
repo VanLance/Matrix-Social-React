@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { User } from '../../types'
 
-export default function RegisterForm() {
+export default function UserForm({ edit } : { edit: boolean}) {
 
   const navigate = useNavigate()
-
   const usernameField = useRef<HTMLInputElement>(null)
   const passwordField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
@@ -14,10 +13,11 @@ export default function RegisterForm() {
   const lNameField = useRef<HTMLInputElement>(null)
 
   useEffect(()=>{
-    if(localStorage.getItem('token')){
+    if( !edit && localStorage.getItem('token')){
       navigate('/')
     }
   },[])
+  
 
   async function handleRegisterData(e: FormEvent<HTMLElement>){
     e.preventDefault()
@@ -34,13 +34,16 @@ export default function RegisterForm() {
       user.last_name = lNameField.current?.value
     }
     clearFormData()
-    await registerUser(user)
+    await registerUser(user, edit )
   }
 
-  async function registerUser(user: User){
-    const res = await fetch('http://127.0.0.1:5000/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+  async function registerUser(user: User, endpoint: boolean | string){
+    endpoint = endpoint ? 'user' : 'register'
+    // const token = {Authorization: `Bearer ${JSON.parse(localStorage.getItem('token')!)}`}
+    const res = await fetch(`http://127.0.0.1:5000/${endpoint}`, {
+      method: edit ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')!}`},
       body: JSON.stringify(user)
     })
     const data = await res.json()
@@ -64,13 +67,13 @@ export default function RegisterForm() {
       <input type="text" name='username' ref={usernameField} required/><br/>
       <label htmlFor="email">Email</label><br/>
       <input type="text" name='email' ref={emailField} required/><br/>
-      <label htmlFor="password">Password</label><br/>
-      <input type="password" name='password' ref={passwordField} required/><br/>
       <label htmlFor="first-name">First Name</label><br/>
       <input type="text" name='first-name' ref={fNameField}/><br/>
       <label htmlFor="last-name">LastName</label><br/>
       <input type="text" name='last-name' ref={lNameField}/><br/>
-      <input type="submit" value='Register' />
+      <label htmlFor="password">Password</label><br/>
+      <input type="password" name='password' ref={passwordField} required/><br/>
+      <input type="submit" value={ edit ? 'Edit':'Register'} />
     </form>
   );
 }

@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Heading from './components/Heading';
 import FormPage from './pages/FormPage';
 import MatrixPage from './pages/MatrixPage';
-import RegisterForm from './components/forms/RegisterForm';
+import UserForm from './components/forms/UserForm';
 import LoginForm from './components/forms/LoginForm';
 import Logout from './components/Logout';
 import SocialPage from './pages/SocialPage';
@@ -18,8 +18,15 @@ function App(): JSX.Element {
         <Routes>
           <Route path='/' element={<MatrixPage />}/>
           <Route path='/users' element={<SocialPage><Users /></SocialPage>} />
-          <Route path='/register' element={<FormPage><RegisterForm /></FormPage>}/>
-          <Route path='/login' element={<FormPage><LoginForm /></FormPage>}/>
+          <Route path='/register' element={<FormPage>
+                                            <UserForm edit={false} />
+                                          </FormPage>}/>
+          <Route path='/login' element={<FormPage>
+                                          <LoginForm />
+                                        </FormPage>}/>
+          <Route path='/edit' element={<FormPage>
+                                        <UserForm edit />
+                                      </FormPage>}/>
           <Route path='/logout' element={<Logout />}/>
           <Route path='*' element={<Navigate to='/' />}/>
         </Routes>

@@ -4,12 +4,12 @@ import Stack from 'react-bootstrap/esm/Stack'
 
 interface BodyProps {
   sidebar : boolean
-  children: JSX.Element[] | JSX.Element
+  children: JSX.Element[] | JSX.Element 
 }
 
 export default function Body({ sidebar, children }: BodyProps) {
   return (
-    <Container>
+    <Container >
       <Stack direction='horizontal'>
         { sidebar && <Sidebar />}
         <div className= 'child-container'>
