@@ -13,7 +13,7 @@ export default function UserForm({ edit } : { edit: boolean}) {
   const lNameField = useRef<HTMLInputElement>(null)
 
   useEffect(()=>{
-    if( !edit && localStorage.getItem('token')){
+    if( !edit && localStorage.getItem('token') ){
       navigate('/')
     }
   },[])
@@ -34,11 +34,11 @@ export default function UserForm({ edit } : { edit: boolean}) {
       user.last_name = lNameField.current?.value
     }
     clearFormData()
-    await registerUser(user, edit )
+    await registerUser( user )
   }
 
-  async function registerUser(user: User, endpoint: boolean | string){
-    endpoint = endpoint ? 'user' : 'register'
+  async function registerUser(user: User){
+    const endpoint = edit ? 'user' : 'register'
     const res = await fetch(`http://127.0.0.1:5000/${endpoint}`, {
       method: edit ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json',

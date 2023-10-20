@@ -24,6 +24,7 @@ export default function Posts() {
       } else console.log('bad request')
   }
 
+
   return (
     <Container>
       
