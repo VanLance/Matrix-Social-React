@@ -1,3 +1,4 @@
+
 import Container from 'react-bootstrap/esm/Container'
 import Sidebar from './Sidebar'
 import Stack from 'react-bootstrap/esm/Stack'
@@ -12,7 +13,7 @@ export default function Body({ sidebar, children }: BodyProps) {
     <Container >
       <Stack direction='horizontal'>
         { sidebar && <Sidebar />}
-        <div className= 'child-container'>
+        <div className='child-container'>
           { children }
         </div>
       </Stack>

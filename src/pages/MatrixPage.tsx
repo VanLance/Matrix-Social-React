@@ -4,8 +4,8 @@ import Students from "../components/Students";
 import Whiteboard from "../components/Whiteboard";
 
 export default function MatrixPage() {
-
-  console.log(localStorage.getItem('token'), 'from landing page')
+  
+ console.log(localStorage.getItem('token'), 'from landing page')
 
   const students = [
     'tim',

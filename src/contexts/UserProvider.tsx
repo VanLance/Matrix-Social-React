@@ -15,7 +15,7 @@ export default function UserProvider({ children }: {
 
   const value = {
     user, 
-    setUser 
+    setUser,
   }
 
   return (

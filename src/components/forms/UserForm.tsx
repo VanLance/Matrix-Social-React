@@ -34,7 +34,7 @@ export default function UserForm({ edit } : { edit: boolean}) {
       user.last_name = lNameField.current?.value
     }
     clearFormData()
-    await registerUser( user )
+    await registerUser( user  )
   }
 
   async function registerUser(user: User){
